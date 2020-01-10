@@ -1,7 +1,7 @@
 Summary: Fast compression and decompression utilities
 Name: ncompress
 Version: 4.2.4.4
-Release: 1%{?dist}
+Release: 3%{?dist}
 License: Public Domain
 Group:  Applications/File
 URL:    http://ncompress.sourceforge.net/
@@ -92,6 +92,12 @@ ln -sf compress.1 $RPM_BUILD_ROOT%{_mandir}/man1/uncompress.1
 %doc LZW.INFO README
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 4.2.4.4-3
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 4.2.4.4-2
+- Mass rebuild 2013-12-27
+
 * Fri Mar 01 2013 Pavel Raiskup <praiskup@redhat.com> - 4.2.4.4-1
 - upstream is dead -> rebase to fork of Mike Frysinger
 - silence gcc warnings, fedora-review fixes
