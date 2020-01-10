@@ -1,7 +1,7 @@
 Summary: Fast compression and decompression utilities
 Name: ncompress
 Version: 4.2.4
-Release: 54%{?dist}
+Release: 54%{?dist}.1
 License: Public Domain
 Group: Applications/File
 URL:    http://ncompress.sourceforge.net/
@@ -14,6 +14,7 @@ Patch4: ncompress-4.2.4-zerobyteforce.patch
 Patch5: ncompress-4.2.4-bssUnderflow.patch
 Patch6: ncompress-4.2.4-endians.patch
 Patch7: ncompress-4.2.4-uncheckedmalloc.patch
+Patch8: ncompress-4.2.4-memmove.patch
 BuildRequires: gcc glibc-devel fileutils
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -37,6 +38,7 @@ which are compatible with the original UNIX compress utility.
 %patch5 -p1 -b .bssUnderflow
 %patch6 -p1 -b .endians
 %patch7 -p1 -b .malloccheck
+%patch8 -p1 -b .memmove
 mv Makefile.def Makefile
 
 %build
@@ -74,6 +76,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc LZW.INFO README
 
 %changelog
+* Fri Jan 13 2012 Ondrej Vasik <ovasik@redhat.com> - 4.2.4-54.1
+- use memmove instead of memcpy to prevent memory overlap corruption
+ (#781973)
+
 * Tue Feb 23 2010 Ondrej Vasik <ovasik@redhat.com> - 4.2.4-54
 - do patch original Makefile.def instead of creating new Makefile
 
